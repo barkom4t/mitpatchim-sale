@@ -723,5 +723,20 @@
     });
   }
 
+  /* ---------------- Course taster video (YouTube, loads only on click) ---------------- */
+  const ytDialog = document.getElementById("yt-dialog");
+  if (ytDialog) {
+    const frame = ytDialog.querySelector(".yt-frame");
+    const closeYt = () => { if (ytDialog.open) ytDialog.close(); frame.innerHTML = ""; };
+    document.querySelectorAll("[data-yt]").forEach((b) => b.addEventListener("click", () => {
+      frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(b.dataset.yt) + '?autoplay=1&rel=0" title="' + (b.dataset.ytTitle || "סרטון") + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      ytDialog.showModal();
+      if (window.fbq) window.fbq("trackCustom", "CourseVideoPlay", { video: b.dataset.yt });
+    }));
+    ytDialog.querySelector(".yt-close").addEventListener("click", closeYt);
+    ytDialog.addEventListener("click", (e) => { if (e.target === ytDialog) closeYt(); });
+    ytDialog.addEventListener("close", () => { frame.innerHTML = ""; });
+  }
+
   window.MB = { CONTACT, STORE };
 })();
