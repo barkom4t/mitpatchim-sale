@@ -2208,9 +2208,7 @@ body.in-deals .mcta { transform: translateY(140%); pointer-events: none; }
 @media (min-width: 761px) { .nv-wall { columns: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; } }
 @media (max-width: 760px) { .nv-col { display: contents; } }
 
-.t3-what { margin: 0 0 12px; color: var(--ink-2); font-size: .9rem; line-height: 1.6; }
-.t3-what b { color: var(--ink); font-weight: 700; }
-.t3--mini .t3-what { display: none; }
+.t3:not(.t3--mini) .t3-for { font-weight: 700; color: var(--ink); line-height: 1.6; font-size: .95rem; }
 .t3-play { position: absolute; inset-inline-start: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 0; border-radius: 999px; background: rgba(255,255,255,.95); color: var(--accent-700); font: inherit; font-weight: 700; font-size: .88rem; cursor: pointer; box-shadow: 0 8px 22px -10px rgba(0,0,0,.5); }
 .t3-play span { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-size: .6rem; }
 .t3-play:hover { transform: translateY(-1px); }
