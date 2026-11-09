@@ -738,5 +738,8 @@
     ytDialog.addEventListener("close", () => { frame.innerHTML = ""; });
   }
 
+  /* Pixel events for on-page videos (data-track-video="EventName"), once per page view */
+  document.querySelectorAll("video[data-track-video]").forEach((v) => v.addEventListener("play", () => { if (window.fbq && !v.dataset.sent) { v.dataset.sent = "1"; window.fbq("trackCustom", v.dataset.trackVideo); } }));
+
   window.MB = { CONTACT, STORE };
 })();
