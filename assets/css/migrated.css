@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Migrated content pages: blog articles, legal pages, product detail pages.
+   Built only on the tokens in style.css (load this file after it).
+   Can be merged into style.css later; see content/MIGRATION.md.
+   ========================================================================== */
+
+/* ---------- Article hero ---------- */
+.article-hero { padding-bottom: clamp(28px, 4vw, 44px); }
+.article-hero .container,
+.article-wrap { max-width: 800px; }
+.article-hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.2; margin: 14px 0 16px; }
+.article-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; color: var(--ink-3); font-size: .92rem; }
+.article-meta .dot-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line-strong); }
+.article-cover { margin: 0 auto clamp(28px, 4vw, 44px); max-width: 960px; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16 / 9; background: var(--cream); }
+.article-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Article body (prose) ---------- */
+.prose { font-size: 1.08rem; line-height: 1.85; color: var(--ink); }
+.prose > * { margin-block: 0 1.05em; }
+.prose h2 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); line-height: 1.3; margin-top: 1.8em; margin-bottom: .6em; }
+.prose h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.35; margin-top: 1.5em; margin-bottom: .5em; }
+.prose h4, .prose h5, .prose h6 { font-size: 1.08rem; margin-top: 1.3em; margin-bottom: .4em; }
+.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.prose a:hover { color: var(--accent-700); }
+.prose ul, .prose ol { padding-inline-start: 1.3em; }
+.prose li { margin-bottom: .35em; }
+.prose li::marker { color: var(--coral-600); }
+.prose blockquote { margin-inline: 0; padding: 14px 22px; border-inline-start: 4px solid var(--coral); background: var(--cream); border-radius: var(--r-sm); color: var(--ink-2); }
+.prose figure { margin: 1.6em 0; }
+.prose figure img { width: 100%; border-radius: var(--r-lg); box-shadow: var(--shadow-sm); }
+.prose figcaption { font-size: .85rem; color: var(--ink-3); text-align: center; margin-top: 8px; }
+.prose hr { border: 0; height: 1px; background: var(--line-strong); margin: 2em 0; }
+.prose .embed { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-lg); overflow: hidden; background: var(--ink); box-shadow: var(--shadow-md); margin: 1.6em 0; }
+.prose .embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.prose .video-link { display: inline-flex; align-items: center; gap: 8px; }
+
+/* ---------- Article footer: author + related ---------- */
+.article-author { display: flex; gap: 16px; align-items: center; padding: 20px 22px; border-radius: var(--r-lg); background: #fff; border: 1px solid var(--line); margin-top: clamp(32px, 5vw, 48px); }
+.article-author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
+.article-author p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.article-author strong { display: block; color: var(--ink); font-size: 1.02rem; }
+.related-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.related-head h2 { margin: 0; font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
+
+/* ---------- Legal pages ---------- */
+.legal { max-width: 860px; }
+.legal .prose { font-size: 1rem; line-height: 1.8; }
+.legal .prose h2 { font-size: 1.25rem; padding-top: .4em; }
+.legal ol.clauses, .legal ol.clauses ol { list-style: none; padding-inline-start: 0; margin: 0 0 1em; }
+.legal ol.clauses ol { padding-inline-start: 1.6em; margin-top: .4em; }
+.legal ol.clauses li { margin-bottom: .55em; display: grid; grid-template-columns: auto 1fr; gap: 0 10px; }
+.legal ol.clauses li > .n { color: var(--terra); font-weight: 500; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+.legal ol.clauses li > ol { grid-column: 1 / -1; }
+.legal-note { padding: 18px 22px; border-radius: var(--r-md); background: var(--cream); border: 1px dashed var(--line-strong); color: var(--ink-2); font-size: .95rem; margin-bottom: 28px; }
+.legal-note strong { color: var(--ink); }
+.legal-toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+.legal-toc a { font-size: .85rem; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--ink-2); }
+.legal-toc a:hover { border-color: var(--coral); color: var(--terra); }
+
+/* ---------- Product detail ---------- */
+.pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.pd-media { display: grid; gap: 12px; }
+.pd-media .main { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; aspect-ratio: 1; }
+.pd-media .main img { width: 100%; height: 100%; object-fit: cover; }
+.pd-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 10px; }
+.pd-thumbs img { aspect-ratio: 1; object-fit: cover; border-radius: var(--r-sm); border: 1px solid var(--line); }
+.pd-price { display: flex; align-items: baseline; gap: 12px; margin: 10px 0 22px; font-size: 1.6rem; font-weight: 600; color: var(--terra); }
+.pd-price s { font-size: 1.05rem; color: var(--ink-3); font-weight: 400; }
+.pd-options { margin: 0 0 22px; padding: 16px 18px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--line); font-size: .95rem; }
+.pd-options strong { display: block; margin-bottom: 4px; }
+
+@media (max-width: 900px) {
+  .pd-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .prose { font-size: 1.02rem; }
+  .article-cover { border-radius: var(--r-lg); }
+}
+.pd-price em { font-style: normal; font-size: .85rem; font-weight: 500; color: var(--st-y2-ink); background: var(--sage); padding: 3px 10px; border-radius: 999px; }
+.pd-price b { font-weight: 600; }
