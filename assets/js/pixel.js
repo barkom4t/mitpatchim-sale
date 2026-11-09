@@ -15,8 +15,13 @@
     t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
   }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
+  /* The checkout lives on the Wix store (www.shlomit-schuster.com), which reports to these three pixels.
+     The sale page reports to them too, so one visitor's journey (ad click -> sale page -> checkout) is one
+     story in the same pixels. _fbp/_fbc cookies are shared across shlomit-schuster.com subdomains. */
+  var WIX_PIXELS = ["1357170748353864", "1353697628527975", "5478104132200620"];
   fbq("init", PIXEL_ID);
-  fbq("track", "PageView");
+  WIX_PIXELS.forEach(function (id) { fbq("init", id); });
+  fbq("track", "PageView"); // goes to every initialised pixel
   if (document.body && document.body.dataset.page === "nov") fbq("track", "ViewContent", { content_name: "November sale", currency: "ILS" });
 
   var CFG = window.MB_CONFIG || { products: {} };
@@ -28,7 +33,10 @@
       var sale = CFG.sale && CFG.sale.prices && CFG.sale.prices[key];
       var data = { content_ids: [key], content_type: "product", currency: "ILS" };
       if (p) { data.content_name = p.name; data.value = sale || p.price || 0; }
-      fbq("track", "InitiateCheckout", data);
+      // Standard event only on the sale-page pixel; the Wix pixels get a custom event so their
+      // own InitiateCheckout/Purchase counts from the store stay accurate.
+      fbq("trackSingle", PIXEL_ID, "InitiateCheckout", data);
+      WIX_PIXELS.forEach(function (id) { fbq("trackSingleCustom", id, "SaleBuyClick", data); });
     } else if (/wa\.me|^tel:/.test(a.getAttribute("href") || "")) {
       fbq("track", "Contact");
     }
